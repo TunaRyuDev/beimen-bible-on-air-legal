@@ -13,7 +13,7 @@
 | `docs/index.html` | 官方入口導覽頁 | 應用程式行銷網址 (Marketing URL) / 官方網站 |
 | `docs/privacy.html` | 隱私權政策 (Privacy Policy) | **隱私權政策網址 (Privacy Policy URL)** |
 | `docs/terms.html` | 服務條款與授權合約 (Terms of Use / EULA) | **使用條款網址 (Terms of Use / EULA URL)** |
-| `docs/delete-account.html` | 帳號與資料刪除指引 (Account & Data Deletion) | **Google Play 資料安全「帳號刪除網址」/ Apple 5.1.1(v)** |
+| `docs/faq.html` | 常見問題與使用支援 (FAQ &amp; Support) | **常見問題 / Google Play 資料安全「帳號刪除網址」/ Apple 5.1.1(v)** |
 
 ---
 
