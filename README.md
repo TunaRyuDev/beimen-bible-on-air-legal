@@ -6,12 +6,25 @@
 
 ## 📄 頁面清單與對應審核欄位
 
-| 檔案名稱 | 頁面功能 | 建議對應 App 審查欄位 |
+網頁原始碼皆存放於 `docs/` 目錄下，便於直接透過 **GitHub Pages (Deploy from `/docs`)** 發布，確保根目錄之自動化腳本（如 `Justfile`）不會對外公開：
+
+| 檔案路徑 | 頁面功能 | 建議對應 App 審查欄位 |
 | :--- | :--- | :--- |
-| `index.html` | 官方入口導覽頁 | 應用程式行銷網址 (Marketing URL) / 官方網站 |
-| `privacy.html` | 隱私權政策 (Privacy Policy) | **隱私權政策網址 (Privacy Policy URL)** |
-| `terms.html` | 服務條款與授權合約 (Terms of Use / EULA) | **使用條款網址 (Terms of Use / EULA URL)** |
-| `delete-account.html` | 帳號與資料刪除指引 (Account & Data Deletion) | **Google Play 資料安全「帳號刪除網址」/ Apple 5.1.1(v)** |
+| `docs/index.html` | 官方入口導覽頁 | 應用程式行銷網址 (Marketing URL) / 官方網站 |
+| `docs/privacy.html` | 隱私權政策 (Privacy Policy) | **隱私權政策網址 (Privacy Policy URL)** |
+| `docs/terms.html` | 服務條款與授權合約 (Terms of Use / EULA) | **使用條款網址 (Terms of Use / EULA URL)** |
+| `docs/delete-account.html` | 帳號與資料刪除指引 (Account & Data Deletion) | **Google Play 資料安全「帳號刪除網址」/ Apple 5.1.1(v)** |
+
+---
+
+## 🌐 GitHub Pages 發布設定
+
+本專案採用 GitHub Pages 內建支援之 `/docs` 資料夾託管機制：
+
+1. 進入 GitHub Repository 的 **Settings** > **Pages**。
+2. 在 **Build and deployment** 下的 **Source** 選擇 **Deploy from a branch**。
+3. Branch 選擇 `main`，資料夾下拉選單選擇 **/docs**。
+4. 點擊 **Save**，GitHub 即會自動部署 `docs/` 內的靜態網頁。
 
 ---
 
@@ -37,7 +50,7 @@
    - 採用教會與 App 專屬之典雅羊皮紙暖白（Parchment）與墨綠/橄欖綠（Olive Green）配色。
    - 支援深色模式（Dark Mode）與行動端響應式排版。
 5. **純靜態無外部依賴**：
-   - 無需 npm build 打包流程，可直接託管於任何靜態伺服器（GitHub Pages、Firebase Hosting、Cloudflare Pages 等）。
+   - 無需 npm build 打包流程，可直接託管於 GitHub Pages (`/docs`) 或任何靜態託管空間。
 
 ---
 
@@ -46,16 +59,16 @@
 在專案根目錄下執行：
 
 ```bash
-# 使用 Justfile（推薦：自動更新靜態資源快取版本號並啟動伺服器）
-just web-serve
-# 或
+# 使用 Justfile（推薦：自動更新 docs/ 靜態資源快取版本號並啟動伺服器）
 just serve
+# 或
+just web-serve
 
-# 亦可直接使用 Python 內建伺服器預覽
-python3 -m http.server 8088
+# 亦可直接使用 Python 內建伺服器預覽 docs/
+python3 -m http.server 8088 --directory docs
 ```
 
-執行後在瀏覽器開啟 `http://localhost:8088` 即可檢視所有頁面。若有修改 CSS 或 JS，可執行 `just stamp` 批次刷新所有 HTML 中的引用版號。
+執行後在瀏覽器開啟 `http://localhost:8088` 即可檢視所有頁面。若有修改 CSS 或 JS，可執行 `just stamp` 批次刷新 `docs/` 下所有 HTML 中的引用版號。
 
 ---
 
