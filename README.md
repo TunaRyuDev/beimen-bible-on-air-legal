@@ -74,7 +74,7 @@ python3 -m http.server 8088 --directory docs
 
 ## 🏛️ 法人資訊與聯絡窗口
 
-- **法人全名**：財團法人台灣聖教會 新竹北門聖教會 (Taiwan Holiness Church Hsinchu Beimen Holiness Church)
+- **法人全名**：財團法人台灣省新竹縣基督教北門聖教會 (Northgate Holiness Christian Church)
 - **教會官網**：[https://w3.nghcc.org.tw/](https://w3.nghcc.org.tw/)
 - **支援信箱**：[support@tuna-ryu.cc](mailto:support@tuna-ryu.cc)
 - **應用程式 Bundle ID / Package Name**：`app.tuna.ryu.nghcc.bibleonair`
