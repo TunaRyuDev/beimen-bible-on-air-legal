@@ -4,16 +4,21 @@
 
 ---
 
-## 📄 頁面清單與對應審核欄位
+## 📄 頁面與檔案清單 (docs/)
 
-網頁原始碼皆存放於 `docs/` 目錄下，便於直接透過 **GitHub Pages (Deploy from `/docs`)** 發布，確保根目錄之自動化腳本（如 `Justfile`）不會對外公開：
+網頁原始碼皆存放於 `docs/` 目錄下，為唯一真實來源 (Single Source of Truth) 並直接作為 **GitHub Pages (Deploy from `/docs`)** 的發布根目錄，確保根目錄之自動化腳本（如 `Justfile`）不會對外公開：
 
-| 檔案路徑 | 頁面功能 | 建議對應 App 審查欄位 |
+> [!NOTE]
+> 早期在主專案中的 `publicWeb/` 資料夾已全數廢止並移除，未來所有條款修訂、樣式調整或常見問題維護，請一律直接在 `docs/` 目錄下進行。
+
+| 檔案路徑 | 頁面 / 檔案功能 | 建議對應 App 審查欄位 |
 | :--- | :--- | :--- |
 | `docs/index.html` | 官方入口導覽頁 | 應用程式行銷網址 (Marketing URL) / 官方網站 |
 | `docs/privacy.html` | 隱私權政策 (Privacy Policy) | **隱私權政策網址 (Privacy Policy URL)** |
 | `docs/terms.html` | 服務條款與授權合約 (Terms of Use / EULA) | **使用條款網址 (Terms of Use / EULA URL)** |
-| `docs/faq.html` | 常見問題與使用支援 (FAQ &amp; Support) | **常見問題 / Google Play 資料安全「帳號刪除網址」/ Apple 5.1.1(v)** |
+| `docs/faq.html` | 常見問題與使用支援 (FAQ & Support) | **常見問題 / Google Play 資料安全「帳號刪除網址」/ Apple 5.1.1(v)** |
+| `docs/style.css` | 典雅閱讀調性樣式表 | 支援系統/淺色/深色模式切換與自適應排版 |
+| `docs/script.js` | 互動與輔助功能腳本 | 中英即時雙語切換、三態外觀切換與設定持久化 |
 
 ---
 
@@ -54,15 +59,18 @@
 
 ---
 
-## 🚀 本地預覽
+## 🚀 常用指令與本地預覽
 
 在專案根目錄下執行：
 
 ```bash
-# 使用 Justfile（推薦：自動更新 docs/ 靜態資源快取版本號並啟動伺服器）
+# 預覽靜態網站（推薦：自動更新 docs/ 靜態資源快取版本號並啟動本地伺服器）
 just serve
-# 或
+# 或 alias
 just web-serve
+
+# 批次刷新 docs/ 下所有 HTML 中的靜態資源快取戳記 (style.css?v=... / script.js?v=...)
+just stamp
 
 # 亦可直接使用 Python 內建伺服器預覽 docs/
 python3 -m http.server 8088 --directory docs
