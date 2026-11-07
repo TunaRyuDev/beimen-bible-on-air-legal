@@ -8,105 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700;900&display=swap" rel="stylesheet">
-  <script>
-    (function() {
-      var t = localStorage.getItem('boa_preferred_theme') || 'system';
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
-  <link rel="stylesheet" href="style.css?v=2611070940">
+  <script src="script.js?v=2611071409"></script>
+  <link rel="stylesheet" href="style.css?v=2611071409">
 </head>
 <body>
 
-  <!-- Site Header -->
-  <header class="site-header">
-    <div class="header-container">
-      <a href="index.html" class="brand-wrapper">
-        <div class="brand-logo-icon">📖</div>
-        <div class="brand-meta">
-          <span class="brand-name">Bible On Air</span>
-          <span class="brand-sub">
-            <span class="lang-zh">新竹北門聖教會</span>
-            <span class="lang-en">Northgate Holiness Christian Church</span>
-          </span>
-        </div>
-      </a>
-
-      <nav>
-        <ul class="nav-links">
-          <li>
-            <a href="index.html" class="nav-link">
-              <span class="lang-zh">首頁</span>
-              <span class="lang-en">Home</span>
-            </a>
-          </li>
-          <li>
-            <a href="privacy.html" class="nav-link">
-              <span class="lang-zh">隱私權政策</span>
-              <span class="lang-en">Privacy Policy</span>
-            </a>
-          </li>
-          <li>
-            <a href="terms.html" class="nav-link">
-              <span class="lang-zh">服務條款</span>
-              <span class="lang-en">Terms of Use</span>
-            </a>
-          </li>
-          <li>
-            <a href="faq.html" class="nav-link active">
-              <span class="lang-zh">常見問題</span>
-              <span class="lang-en">FAQ</span>
-            </a>
-          </li>
-          <li class="theme-dropdown-container">
-            <button type="button" class="theme-switch-btn" aria-haspopup="true" aria-expanded="false" title="外觀：跟隨系統 (點擊展開選單)">
-              <span class="theme-icon">💻</span>
-              <span class="theme-label-zh lang-zh">系統</span>
-              <span class="theme-label-en lang-en">System</span>
-              <span class="dropdown-arrow">▾</span>
-            </button>
-            <div class="theme-dropdown-menu" role="menu">
-              <button type="button" class="theme-menu-item active" data-theme-value="system" role="menuitem">
-                <span class="theme-menu-item-left">
-                  <span class="menu-icon">💻</span>
-                  <span class="menu-label">
-                    <span class="lang-zh">跟隨系統</span>
-                    <span class="lang-en">System Default</span>
-                  </span>
-                </span>
-                <span class="menu-check">✓</span>
-              </button>
-              <button type="button" class="theme-menu-item" data-theme-value="light" role="menuitem">
-                <span class="theme-menu-item-left">
-                  <span class="menu-icon">☀️</span>
-                  <span class="menu-label">
-                    <span class="lang-zh">淺色模式</span>
-                    <span class="lang-en">Light Mode</span>
-                  </span>
-                </span>
-                <span class="menu-check">✓</span>
-              </button>
-              <button type="button" class="theme-menu-item" data-theme-value="dark" role="menuitem">
-                <span class="theme-menu-item-left">
-                  <span class="menu-icon">🌙</span>
-                  <span class="menu-label">
-                    <span class="lang-zh">深色模式</span>
-                    <span class="lang-en">Dark Mode</span>
-                  </span>
-                </span>
-                <span class="menu-check">✓</span>
-              </button>
-            </div>
-          </li>
-          <li>
-            <button type="button" class="lang-switch-btn" aria-label="Toggle language">
-              🌐 <span class="lang-label">EN / English</span>
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- Site Header Component -->
+  <site-header></site-header>
 
   <!-- Main Container -->
   <main class="main-wrapper">
@@ -452,7 +360,5 @@
       </div>
     </div>
   </footer>
-
-  <script src="script.js?v=2611070940"></script>
 </body>
 </html>

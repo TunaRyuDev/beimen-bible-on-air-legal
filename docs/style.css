@@ -135,6 +135,10 @@ a:hover {
 }
 
 /* ==================== Header & Navigation ==================== */
+site-header {
+  display: contents;
+}
+
 .site-header {
   background: var(--bg-card);
   border-bottom: 1px solid var(--border-color);
@@ -238,8 +242,9 @@ a:hover {
   border-color: var(--color-primary);
 }
 
-/* ==================== Theme Dropdown Menu ==================== */
-.theme-dropdown-container {
+/* ==================== Theme & Language Dropdown Menu ==================== */
+.theme-dropdown-container,
+.lang-dropdown-container {
   position: relative;
   display: inline-flex;
 }
@@ -252,15 +257,17 @@ a:hover {
   display: inline-block;
 }
 
-.theme-dropdown-container.open .dropdown-arrow {
+.theme-dropdown-container.open .dropdown-arrow,
+.lang-dropdown-container.open .dropdown-arrow {
   transform: rotate(180deg);
 }
 
-.theme-dropdown-menu {
+.theme-dropdown-menu,
+.lang-dropdown-menu {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  min-width: 175px;
+  min-width: 160px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
@@ -285,11 +292,13 @@ a:hover {
   }
 }
 
-.theme-dropdown-container.open .theme-dropdown-menu {
+.theme-dropdown-container.open .theme-dropdown-menu,
+.lang-dropdown-container.open .lang-dropdown-menu {
   display: flex;
 }
 
-.theme-menu-item {
+.theme-menu-item,
+.lang-menu-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -308,31 +317,36 @@ a:hover {
   transition: all 0.15s ease;
 }
 
-.theme-menu-item:hover {
+.theme-menu-item:hover,
+.lang-menu-item:hover {
   background: var(--bg-card-subtle);
   color: var(--color-primary);
 }
 
-.theme-menu-item.active {
+.theme-menu-item.active,
+.lang-menu-item.active {
   font-weight: 700;
   color: var(--color-primary);
   background: var(--color-primary-subtle);
 }
 
-.theme-menu-item-left {
+.theme-menu-item-left,
+.lang-menu-item-left {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
-.theme-menu-item .menu-check {
+.theme-menu-item .menu-check,
+.lang-menu-item .menu-check {
   font-size: 0.85rem;
   color: var(--color-primary);
   font-weight: 700;
   opacity: 0;
 }
 
-.theme-menu-item.active .menu-check {
+.theme-menu-item.active .menu-check,
+.lang-menu-item.active .menu-check {
   opacity: 1;
 }
 
