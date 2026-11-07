@@ -14,7 +14,7 @@
       document.documentElement.setAttribute('data-theme', t);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=2610241011">
+  <link rel="stylesheet" href="style.css?v=2611070923">
 </head>
 <body>
 
@@ -121,7 +121,7 @@
           <span class="lang-en">Bible On Air Privacy Policy</span>
         </h1>
         <div class="doc-meta">
-          <span>📅 <span class="lang-zh">最後更新與生效日期：2026 年 10 月</span><span class="lang-en">Effective Date: October 2026</span></span>
+          <span>📅 <span class="lang-zh">最後更新與生效日期：2026 年 11 月</span><span class="lang-en">Effective Date: November 2026</span></span>
           <span>🏛️ <span class="lang-zh">主辦單位：財團法人台灣省新竹縣基督教北門聖教會</span><span class="lang-en">Organization: Northgate Holiness Christian Church</span></span>
         </div>
       </div>
@@ -171,47 +171,63 @@
           <span class="lang-zh">2.1 帳號與身分識別資料</span>
           <span class="lang-en">2.1 Account &amp; Identity Information</span>
         </h3>
-        <ul>
+<ul>
           <li>
             <span class="lang-zh">
-              <strong>第三方登入（Google Sign-In / Sign in with Apple）：</strong>當您選擇以 Google 或 Apple 帳號登入時，系統會經由 Firebase Authentication 接收您的專屬使用者識別碼（User ID / UID）、電子郵件地址（Email）、顯示暱稱（Display Name）及大頭照網址（Photo URL）。若您使用 Apple「隱藏我的電子郵件」功能，我們僅會收到 Apple 指派的隨機轉發信箱。
+              <strong>第三方登入（Google Sign-In / Sign in with Apple）：</strong>當您選擇以 Google 或 Apple 帳號登入時，系統會經由 Firebase Authentication 接收您的專屬使用者識別碼（User ID / UID）、電子郵件地址（Email）、顯示暱稱（Display Name）及大頭照網址（Photo URL），並將帳號檔案（UID、Email、暱稱、登入方式、最後登入時間）儲存於 Cloud Firestore。若您使用 Apple「隱藏我的電子郵件」功能，我們僅會收到 Apple 指派的隨機轉發信箱。
             </span>
             <span class="lang-en">
-              <strong>Third-Party Sign-In (Google Sign-In / Sign in with Apple):</strong> When logging in via Google or Apple, Firebase Authentication receives a unique User ID (UID), email address, display name, and avatar URL. If you utilize Apple's "Hide My Email" feature, we only receive Apple's randomized relay address.
+              <strong>Third-Party Sign-In (Google Sign-In / Sign in with Apple):</strong> When logging in via Google or Apple, Firebase Authentication receives a unique User ID (UID), email address, display name, and avatar URL, and an account profile (UID, email, display name, sign-in provider, last login time) is stored in Cloud Firestore. If you use Apple's "Hide My Email" feature, we only receive Apple's randomized relay address.
             </span>
           </li>
           <li>
             <span class="lang-zh">
-              <strong>訪客模式（Guest Mode）：</strong>若您選擇不登入以訪客身分使用，系統僅會在裝置本地與 Firebase 產生隨機匿名識別碼，不收集任何個人真實姓名或電子郵件。
+              <strong>個人檔案（自訂暱稱與頭像）：</strong>您可自訂顯示暱稱，並可選擇預設頭像、登入服務提供之頭像，或從相機／相簿選取照片作為自訂頭像。暱稱會儲存於您的帳號檔案，自訂頭像（裁切後縮圖）會上傳至 Firebase Storage，用於不同裝置間同步。
             </span>
             <span class="lang-en">
-              <strong>Guest / Anonymous Mode:</strong> If you use the App as a guest, a randomized anonymous identifier is generated. No real name or email is collected.
+              <strong>Profile (Custom Nickname &amp; Avatar):</strong> You may set a custom display name and choose a preset avatar, your sign-in provider's avatar, or a photo from your camera / photo library as a custom avatar. The nickname is stored in your account profile, and the custom avatar (cropped thumbnail) is uploaded to Firebase Storage to sync across devices.
             </span>
           </li>
-        </ul>
+          <li>
+            <span class="lang-zh">
+              <strong>訪客模式（Guest Mode）：</strong>若您選擇不登入以訪客身分使用，系統僅會產生 Firebase 隨機匿名識別碼，不收集任何個人真實姓名或電子郵件。訪客的靈修心得與打卡紀錄僅存於本機，不會同步至雲端，亦無法使用雲端備份與還原功能。
+            </span>
+            <span class="lang-en">
+              <strong>Guest / Anonymous Mode:</strong> If you use the App as a guest, only a randomized anonymous Firebase identifier is generated; no real name or email is collected. A guest's devotional notes and check-ins stay on the device only, are not synced to the cloud, and cannot use Cloud Backup &amp; Restore.
+            </span>
+          </li>
+</ul>
 
-        <h3>
-          <span class="lang-zh">2.2 靈修心得與閱讀活動（僅儲存於本機裝置）</span>
-          <span class="lang-en">2.2 Devotional Notes &amp; Reading Activity (Stored Locally on Device Only)</span>
+<h3>
+          <span class="lang-zh">2.2 靈修心得與閱讀活動（本機儲存；登入帳號可雲端同步）</span>
+          <span class="lang-en">2.2 Devotional Notes &amp; Reading Activity (Stored Locally; Cloud Sync for Signed-In Accounts)</span>
         </h3>
         <ul>
           <li>
             <span class="lang-zh">
-              <strong>靈修心得與筆記（Devotional Notes）：</strong>您針對每日經文所撰寫的感言、禱告與個人心得筆記。本應用程式極度重視您的隱私，所有靈修心得筆記皆<strong>僅儲存在您自己的手機裝置本機資料庫中（Local SQLite）</strong>，雲端伺服器不會收集、同步或儲存您的筆記內容。
+              <strong>靈修心得與筆記（Devotional Notes）：</strong>您針對每日經文所撰寫的感言、禱告與個人心得筆記（每篇上限 512 字）。筆記一律先儲存於您手機的本機資料庫（Local SQLite）；<strong>訪客模式下僅存於本機</strong>。若您以 Google / Apple 正式帳號登入，最近 6 個月內的筆記會同步至您專屬的 Cloud Firestore 路徑，以便跨裝置使用（詳見第 5 節）。<strong>此資料僅供您本人存取，不會公開或與其他使用者分享，教會同工亦無法查看。</strong>
             </span>
             <span class="lang-en">
-              <strong>Devotional Reflections &amp; Notes:</strong> Personal reflections, prayers, and notes you write for daily readings. To protect your privacy, all devotional notes are <strong>stored exclusively in your local on-device database (Local SQLite)</strong>. The cloud server does not collect, sync, or store your notes.
+              <strong>Devotional Reflections &amp; Notes:</strong> Personal reflections, prayers, and notes you write for daily readings (up to 512 characters each). Notes are always saved first in your local on-device database (Local SQLite); <strong>in guest mode they stay on your device only</strong>. If you sign in with a Google / Apple account, notes from the most recent 6 months are synced to your personal Cloud Firestore path for cross-device use (see Section 5). <strong>This data is accessible only by you; it is never made public or shared with other users, and church staff cannot view it.</strong>
             </span>
           </li>
           <li>
             <span class="lang-zh">
-              <strong>閱讀打卡與歷程（Reading Records &amp; Calendar）：</strong>記錄您每日完成靈修經文的閱讀狀態與打卡時間戳記，供您在手機上檢視個人靈修月曆與進度。此打卡歷程<strong>同樣僅儲存於您的手機本機</strong>，雲端伺服器不保存您的個人閱讀歷程。
+              <strong>閱讀打卡與歷程（Reading Records &amp; Calendar）：</strong>記錄您每日完成靈修經文的閱讀狀態與打卡時間戳記，供您檢視個人靈修月曆與進度。<strong>其儲存與同步方式與心得筆記相同</strong>（本機為主；登入帳號同步近 6 個月）。
             </span>
             <span class="lang-en">
-              <strong>Reading Check-ins &amp; Progress:</strong> Timestamps of completed daily readings to provide monthly reading calendars on your device. These check-in records are <strong>likewise stored solely on your local device</strong> and are not uploaded to cloud servers.
+              <strong>Reading Check-ins &amp; Progress:</strong> Timestamps of completed daily readings to provide your monthly reading calendar. <strong>They are stored and synced in the same way as notes</strong> (local-first; recent 6 months synced for signed-in accounts).
             </span>
           </li>
-        </ul>
+          <li>
+            <span class="lang-zh">
+              <strong>雲端備份檔（選用）：</strong>僅在您主動使用「雲端備份與還原」時，才會將完整歷史打卡與心得壓縮上傳至 Firebase Storage，並於 12 小時有效期限後無法還原、由系統自動刪除（詳見第 5 節）。
+            </span>
+            <span class="lang-en">
+              <strong>Cloud Backup File (optional):</strong> Only when you actively use "Cloud Backup &amp; Restore" is your full history of check-ins and notes compressed and uploaded to Firebase Storage; it can no longer be restored after the 12-hour validity and is automatically deleted (see Section 5).
+            </span>
+          </li>
+</ul>
 
         <h3>
           <span class="lang-zh">2.3 技術與裝置資訊</span>
@@ -220,26 +236,26 @@
         <ul>
           <li>
             <span class="lang-zh">
-              <strong>推播通知代碼（FCM Token）：</strong>若您允許接收推播通知，系統會記錄 Firebase Cloud Messaging (FCM) 代碼，僅用於向您的裝置發送每日靈修提醒與教會重要公告。
+              <strong>推播通知代碼（FCM Token）：</strong>若您允許接收推播通知，系統會記錄 Firebase Cloud Messaging (FCM) 代碼，並與您的帳號檔案一同儲存，僅用於向您的裝置發送每日靈修提醒與教會重要公告。
             </span>
             <span class="lang-en">
-              <strong>Push Notification Token (FCM Token):</strong> If notification permission is granted, a Firebase Cloud Messaging token is registered solely to deliver daily devotional reminders and church announcements.
+              <strong>Push Notification Token (FCM Token):</strong> If notification permission is granted, a Firebase Cloud Messaging token is registered and stored with your account profile, solely to deliver daily devotional reminders and church announcements.
             </span>
           </li>
           <li>
             <span class="lang-zh">
-              <strong>崩潰日誌與診斷（Crashlytics &amp; Diagnostics）：</strong>為維持系統穩定性，當應用程式發生閃退或嚴重異常時，Firebase Crashlytics 會收集匿名錯誤回溯（Stack Trace）、裝置型號及作業系統版本。您亦可在 App 內主動匯出診斷日誌進行問題回報。
+              <strong>崩潰日誌與診斷（Crashlytics &amp; Diagnostics）：</strong>為維持系統穩定性，當應用程式發生閃退或嚴重異常時，Firebase Crashlytics 會收集錯誤回溯（Stack Trace）、裝置型號及作業系統版本。您亦可在 App 內主動匯出診斷日誌（ZIP 檔）並自行以電子郵件寄送給我們進行問題回報。
             </span>
             <span class="lang-en">
-              <strong>Crash Reports &amp; Diagnostics (Crashlytics):</strong> To ensure app stability, Firebase Crashlytics collects anonymized stack traces, device model, and OS version when crashes occur. You can also manually export diagnostics to report issues.
+              <strong>Crash Reports &amp; Diagnostics (Crashlytics):</strong> To ensure app stability, Firebase Crashlytics collects stack traces, device model, and OS version when crashes occur. You can also manually export a diagnostics log (ZIP) and send it to us by email to report issues.
             </span>
           </li>
           <li>
             <span class="lang-zh">
-              <strong>基本彙整使用統計（Firebase Analytics）：</strong>收集去識別化之功能使用頻率（如打卡次數、熱門功能開啟），供工程團隊改善操作體驗。
+              <strong>使用統計（Firebase Analytics）：</strong>收集功能使用頻率（如打卡次數、熱門功能開啟），並僅以 Firebase 使用者識別碼（UID）及登入方式關聯，<strong>不會傳送您的電子郵件</strong>，供工程團隊改善操作體驗。
             </span>
             <span class="lang-en">
-              <strong>Aggregated Analytics (Firebase Analytics):</strong> Collects de-identified usage statistics (e.g., feature frequency) to optimize user experience.
+              <strong>Usage Analytics (Firebase Analytics):</strong> Collects feature usage statistics (e.g., check-in counts, popular features) associated only with your Firebase user ID (UID) and sign-in method — <strong>your email is not sent</strong> — to help optimize the user experience.
             </span>
           </li>
         </ul>
@@ -251,11 +267,11 @@
               <span class="lang-zh">我們「絕不」收集的機敏資訊</span>
               <span class="lang-en">Data We Do NOT Collect</span>
             </strong><br>
-            <span class="lang-zh">
-              本 App 絕不收集：精確或粗略地理位置 (GPS)、通訊錄聯絡人、相機拍照或相簿檔案、麥克風錄音、信用卡或任何財務付款資料、以及廣告追蹤識別碼 (IDFA / AAID)。
+<span class="lang-zh">
+              本 App 絕不收集：精確或粗略地理位置 (GPS)、通訊錄聯絡人、麥克風錄音、信用卡或任何財務付款資料、以及廣告追蹤識別碼 (IDFA / AAID)。相機與相簿僅在您主動設定自訂頭像時，才會經您授權後存取您所選取或拍攝的單張照片，我們不會掃描或讀取您的其他相片。
             </span>
             <span class="lang-en">
-              We NEVER collect: Precise/coarse GPS location, Contacts/Address book, Camera or Photo library, Microphone audio, Credit cards or payment information, or Advertising Tracking Identifiers (IDFA / AAID).
+              We NEVER collect: precise/coarse GPS location, contacts/address book, microphone audio, credit card or payment information, or advertising tracking identifiers (IDFA / AAID). The camera and photo library are accessed only with your permission when you choose to set a custom avatar, and only the single photo you select or take is used; we do not scan or read your other photos.
             </span>
           </div>
         </div>
@@ -276,6 +292,14 @@
           <li>
             <span class="lang-zh">提供、維持並個人化 Bible On Air 應用程式服務（包括靈修內容呈現、經文音訊播放）。</span>
             <span class="lang-en">Provide, maintain, and personalize the Bible On Air application (including scripture display and audio playback).</span>
+          </li>
+          <li>
+            <span class="lang-zh">
+              提供已登入帳號之靈修心得與打卡跨裝置同步、雲端備份與還原，以及自訂頭像之跨裝置顯示。
+            </span>
+            <span class="lang-en">
+              Provide cross-device sync of devotional notes and check-ins, cloud backup and restore, and cross-device avatar display for signed-in accounts.
+            </span>
           </li>
           <li>
             <span class="lang-zh">進行使用者身分認證與帳號安全管理（經由 Firebase Authentication）。</span>
@@ -322,10 +346,10 @@
             </thead>
             <tbody>
               <tr>
-                <td><strong>Google LLC (Firebase)</strong><br><small>Auth, FCM, Crashlytics, Analytics, App Check, Firestore (公開文章唯讀)</small></td>
+<td><strong>Google LLC (Firebase)</strong><br><small>Auth, Firestore, Storage, FCM, Crashlytics, Analytics, App Check</small></td>
                 <td>
-                  <span class="lang-zh">使用者身分認證（僅記錄登入帳號）、靈修公開文章唯讀獲取、推播通知發送、應用程式錯誤診斷與安全防護。<strong>雲端伺服器不儲存使用者任何個人筆記與打卡記錄</strong>。</span>
-                  <span class="lang-en">Authentication (login credentials only), public devotional content delivery, push notifications, crash diagnosis, and API security. <strong>Cloud servers do not store user notes or check-in records</strong>.</span>
+                  <span class="lang-zh">使用者身分認證、帳號檔案儲存、已登入帳號之靈修心得與打卡跨裝置同步（Firestore，近 6 個月）、雲端備份與自訂頭像儲存（Storage）、靈修公開文章唯讀獲取、推播通知發送、應用程式錯誤診斷與安全防護。<strong>您的同步資料僅限本人帳號存取，教會同工無權讀取</strong>。</span>
+                  <span class="lang-en">Authentication, account profile storage, cross-device sync of devotional notes and check-ins for signed-in accounts (Firestore, recent 6 months), cloud backup and custom avatar storage (Storage), public devotional content delivery, push notifications, crash diagnosis, and API security. <strong>Your synced data is accessible only by your own account; church staff have no access</strong>.</span>
                 </td>
                 <td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Privacy &amp; Security</a></td>
               </tr>
@@ -349,38 +373,62 @@
           <span class="lang-zh">資料安全與保存架構</span>
           <span class="lang-en">Data Security &amp; Storage Architecture</span>
         </h2>
-        <p>
+<p>
           <span class="lang-zh">
-            <strong>雲端與本機分工保護：</strong>
+            <strong>雲端與本機分工保護：</strong>本應用程式以「本機優先」（Local-First）設計，手機本機資料庫為您的主要資料來源；僅在您以 Google / Apple 正式帳號登入時，才會啟用下列雲端功能。
           </span>
           <span class="lang-en">
-            <strong>Hybrid Architecture &amp; Protection:</strong>
+            <strong>Hybrid Architecture &amp; Protection:</strong> The App is designed local-first: the on-device database is your primary source of data. The cloud features below are enabled only when you sign in with a Google / Apple account.
           </span>
         </p>
         <ul>
           <li>
             <span class="lang-zh">
-              <strong>雲端伺服器（僅限登入認證）：</strong>雲端僅使用 Google Firebase Authentication 儲存您用於登入的基本帳號識別資訊（如 UID、Email），傳輸過程全程強制採用 HTTPS / TLS 1.3 企業級加密協定。<strong>雲端不儲存您的任何閱讀打卡紀錄或靈修心得筆記。</strong>
+              <strong>手機裝置本機：</strong>您的靈修筆記、禱告感言與每日打卡紀錄永久保存於本機資料庫（Local SQLite），享有手機作業系統之沙盒隱私保護；訪客模式下，這些資料<strong>僅存在您的手機中，不會上傳至任何伺服器</strong>。
             </span>
             <span class="lang-en">
-              <strong>Cloud Server (Authentication Only):</strong> The cloud utilizes Google Firebase Authentication solely to store essential login identifiers (UID, Email), enforced with HTTPS/TLS 1.3 enterprise encryption. <strong>Cloud servers do not store your reading records or devotional notes.</strong>
+              <strong>Local Device:</strong> Your devotional notes, prayers, and daily check-ins are kept permanently in the local on-device database (Local SQLite), protected by the operating system sandbox. In guest mode, this data <strong>stays on your device and is never uploaded to any server</strong>.
             </span>
           </li>
           <li>
             <span class="lang-zh">
-              <strong>手機裝置本機（心得筆記與打卡）：</strong>您的靈修筆記、感言禱告與每日打卡紀錄<strong>完全儲存在您個人手機之本機資料庫中（Local SQLite）</strong>，享有手機作業系統最高級別之沙盒隱私保護，不會上傳至任何伺服器。
+              <strong>雲端跨裝置同步（Cloud Firestore，僅限正式登入帳號）：</strong>為方便您在多部裝置間延續靈修進度，已登入之正式帳號會將<strong>最近 6 個日曆月</strong>內的靈修心得（每篇上限 512 字）與讀經打卡紀錄同步至 Cloud Firestore（儲存於您個人帳號專屬路徑下）。超過同步期間的雲端資料會由系統依到期時間自動清除，但<strong>您手機本機的歷史資料不會因此被刪除</strong>。刪除的筆記會以「刪除標記」同步至其他裝置，並隨到期自動回收。
             </span>
             <span class="lang-en">
-              <strong>Local Device (Notes &amp; Check-ins):</strong> Your devotional reflections, prayer journals, and daily reading check-ins reside <strong>strictly within your local on-device database (Local SQLite)</strong>, protected by the operating system sandbox and never transmitted to remote servers.
+              <strong>Cloud Cross-Device Sync (Cloud Firestore, signed-in accounts only):</strong> To let you continue your devotions across devices, signed-in accounts sync devotional notes (up to 512 characters each) and reading check-ins from the <strong>most recent 6 calendar months</strong> to Cloud Firestore, stored under your personal account path. Cloud data outside this window is automatically purged upon expiry, but <strong>your local on-device history is never deleted as a result</strong>. Deleted notes are propagated to your other devices as deletion markers, which are also automatically purged upon expiry.
+            </span>
+          </li>
+          <li>
+            <span class="lang-zh">
+              <strong>雲端備份與還原（Firebase Storage，僅限正式登入帳號）：</strong>當您主動使用「雲端備份與還原」功能時，系統會將您完整歷史之打卡與靈修心得打包為單一壓縮檔，暫存於您專屬之路徑（每位使用者最多 1 份，重複匯出將覆寫）。該備份檔<strong>自建立起僅 12 小時內可供還原</strong>，逾期即無法還原，並由系統於 1～2 日內自動刪除。
+            </span>
+            <span class="lang-en">
+              <strong>Cloud Backup &amp; Restore (Firebase Storage, signed-in accounts only):</strong> When you actively use "Cloud Backup &amp; Restore", your full history of check-ins and devotional notes is packaged into a single compressed file and temporarily stored under your personal path (at most one file per user; re-exporting overwrites it). The backup can be <strong>restored for only 12 hours after creation</strong>, after which it can no longer be restored and is automatically deleted by the system within 1–2 days.
+            </span>
+          </li>
+          <li>
+            <span class="lang-zh">
+              <strong>自訂頭像（Firebase Storage）：</strong>若您設定自訂頭像，裁切後之縮圖將上傳至您專屬之 Firebase Storage 路徑，供您在不同裝置間同步顯示；您可隨時改回預設頭像，刪除帳號時亦一併刪除。
+            </span>
+            <span class="lang-en">
+              <strong>Custom Avatar (Firebase Storage):</strong> If you set a custom avatar, the cropped thumbnail is uploaded to your personal Firebase Storage path so it can be displayed across your devices. You can switch back to a preset avatar at any time, and it is deleted along with your account.
+            </span>
+          </li>
+          <li>
+            <span class="lang-zh">
+              <strong>存取權限與加密：</strong>您的雲端同步資料、備份檔與頭像，僅限<strong>您本人之登入帳號</strong>可讀寫，<strong>本教會同工及管理後台人員均無權限讀取您的靈修心得、打卡紀錄與備份檔</strong>；所有資料傳輸全程採用 HTTPS / TLS 加密。
+            </span>
+            <span class="lang-en">
+              <strong>Access Control &amp; Encryption:</strong> Your cloud-synced data, backup file, and avatar can be read and written <strong>only by your own signed-in account</strong>. <strong>Church staff and administrators have no access to your devotional notes, check-ins, or backup file.</strong> All data in transit is protected with HTTPS / TLS encryption.
             </span>
           </li>
         </ul>
         <p>
           <span class="lang-zh">
-            <strong>保存期限：</strong>雲端帳號憑證於帳號存續期間維持；一旦您執行帳號刪除，Firebase Auth 雲端帳號即刻永久註銷，手機本機資料庫亦一併清空抹除。
+            <strong>保存期限：</strong>帳號檔案與認證資料於帳號存續期間保存；同步之心得與打卡資料依上述 6 個月視窗滾動保存；雲端備份檔 12 小時內可還原並於 1～2 日內自動刪除；自訂頭像保存至您更換或刪除帳號為止。一旦您執行帳號刪除，上述雲端資料與 Firebase Authentication 帳號將一併刪除，手機本機資料庫亦同步清空。
           </span>
           <span class="lang-en">
-            <strong>Retention Period:</strong> Cloud authentication credentials persist while your account remains active. Upon initiating account deletion, cloud credentials are permanently revoked immediately, and the local SQLite database is cleared.
+            <strong>Retention Period:</strong> Account profile and authentication data are kept while your account remains active; synced notes and check-ins are retained on a rolling 6-month window; cloud backups are restorable for 12 hours and automatically deleted within 1–2 days; custom avatars are kept until you change them or delete your account. Upon account deletion, all of the above cloud data and your Firebase Authentication account are deleted, and the local database is cleared.
           </span>
         </p>
       </section>
@@ -396,24 +444,40 @@
           <span class="lang-zh">依據個資法規，您對您的個人資料享有以下完整權利：</span>
           <span class="lang-en">Under data protection laws, you possess the following rights regarding your personal data:</span>
         </p>
-        <ul>
+<ul>
           <li>
-            <span class="lang-zh"><strong>查詢與閱覽：</strong>您可隨時在 App 內檢視個人帳號身分與本機靈修心得。</span>
-            <span class="lang-en"><strong>Access &amp; Review:</strong> You can view your account identity and local devotional notes inside the App at any time.</span>
+            <span class="lang-zh">
+              <strong>查詢與閱覽：</strong>您可隨時在 App 內檢視個人帳號身分、暱稱頭像、靈修心得與打卡紀錄。
+            </span>
+            <span class="lang-en">
+              <strong>Access &amp; Review:</strong> You can view your account identity, nickname, avatar, devotional notes, and reading check-ins inside the App at any time.
+            </span>
           </li>
           <li>
-            <span class="lang-zh"><strong>匯出本機資料：</strong>App 內提供「匯出全部心得筆記為 ZIP 檔」功能，方便您隨時將手機內的心得備份至個人電腦或雲端硬碟。</span>
-            <span class="lang-en"><strong>Data Portability:</strong> The App provides a built-in feature to export all devotional notes into a ZIP archive for offline backup.</span>
+            <span class="lang-zh">
+              <strong>匯出與備份資料：</strong>App 內提供「匯出讀經心得」功能（將心得打包為 Markdown 檔案之 ZIP 壓縮檔，供您保存或分享），亦提供「雲端備份與還原」功能（限已登入正式帳號）供跨裝置轉移完整歷史紀錄。
+            </span>
+            <span class="lang-en">
+              <strong>Data Export &amp; Backup:</strong> The App provides an "Export Devotional Notes" feature (a ZIP archive of Markdown files for you to save or share) and, for signed-in accounts, a "Cloud Backup &amp; Restore" feature to transfer your full history across devices.
+            </span>
           </li>
           <li>
-            <span class="lang-zh"><strong>自主刪除帳號與資料（自服務）：</strong>您可直接在 App 內點選「個人檔案 (Profile)」&rarr;「刪除帳號並清除所有資料」，系統將立即自 Firebase Auth 徹底註銷並抹除您的登入帳號，同時徹底清空手機本機 SQLite 資料庫中的所有心得與打卡紀錄。</span>
-            <span class="lang-en"><strong>Self-Service Account &amp; Data Deletion:</strong> Navigate to Profile &rarr; "Delete Account &amp; Clear All Data". The App instantly permanently deletes your Firebase Auth account and clears all local notes and check-ins from the device SQLite database.</span>
+            <span class="lang-zh">
+              <strong>自主刪除帳號與資料（自服務）：</strong>您可直接在 App 內點選「個人檔案 (Profile)」&rarr;「刪除帳號並清除所有資料」，經二次確認後，系統將刪除您在雲端的全部資料——包括 Firestore 中之帳號檔案、同步之靈修心得與打卡紀錄、Firebase Storage 中之雲端備份檔與自訂頭像——並註銷 Firebase Authentication 登入帳號，同時清空手機本機資料庫中的所有心得、打卡紀錄與頭像資料。
+            </span>
+            <span class="lang-en">
+              <strong>Self-Service Account &amp; Data Deletion:</strong> Navigate to Profile &rarr; "Delete Account &amp; Clear All Data" and confirm. The App deletes all of your cloud data — including your account profile, synced devotional notes and reading check-ins in Firestore, your cloud backup file and custom avatar in Firebase Storage — and removes your Firebase Authentication account, while also clearing all notes, check-ins, and avatar data from the local device database.
+            </span>
           </li>
           <li>
-            <span class="lang-zh"><strong>專人協助刪除：</strong>若您無法開啟 App 或已將其解除安裝，可隨時寄信至 <a href="mailto:support@tuna-ryu.cc">support@tuna-ryu.cc</a>，我們將於 7 個工作天內由專人為您完成雲端登入帳號註銷抹除。詳細流程請參閱<a href="faq.html#account-deletion">常見問題之帳號與資料刪除指引</a>。</span>
-            <span class="lang-en"><strong>Manual Deletion Assistance:</strong> If you cannot access the App or have uninstalled it, email <a href="mailto:support@tuna-ryu.cc">support@tuna-ryu.cc</a>. We will revoke and purge your cloud account within 7 business days. See our <a href="faq.html#account-deletion">FAQ: Account &amp; Data Deletion Guide</a>.</span>
+            <span class="lang-zh">
+              <strong>專人協助刪除：</strong>若您無法開啟 App 或已將其解除安裝，可隨時寄信至 <a href="mailto:support@tuna-ryu.cc">support@tuna-ryu.cc</a>，我們將於 7 個工作天內由專人為您完成雲端登入帳號及雲端資料之註銷抹除。詳細流程請參閱<a href="faq.html#account-deletion">常見問題之帳號與資料刪除指引</a>。
+            </span>
+            <span class="lang-en">
+              <strong>Manual Deletion Assistance:</strong> If you cannot access the App or have uninstalled it, email <a href="mailto:support@tuna-ryu.cc">support@tuna-ryu.cc</a>. We will revoke your cloud account and purge your cloud data within 7 business days. See our <a href="faq.html#account-deletion">FAQ: Account &amp; Data Deletion Guide</a>.
+            </span>
           </li>
-        </ul>
+</ul>
       </section>
 
       <!-- Children's Privacy -->
@@ -517,6 +581,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=2610241011"></script>
+  <script src="script.js?v=2611070923"></script>
 </body>
 </html>
